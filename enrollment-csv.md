@@ -113,7 +113,7 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 |3|firstName| **(REQUIRED)** The first name of the teacher. |String|
 |4|middleName|The middle name of the teacher. |String|
 |5|lastName| **(REQUIRED)** The given name of the teacher. |String|
-|6|tearcherTitle|Title for this teacher.|String|
+|6|teacherTitle|Title for this teacher.|String|
 |7|teacherUsername|The teacher's username for applications. |String|
 |8|teacherPassword|The teacher's default passwords for applications. |String|
 |9|teacherEmail|The Email address of the teacher|String|
