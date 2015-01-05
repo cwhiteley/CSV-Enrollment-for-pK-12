@@ -68,7 +68,7 @@ The section.csv file provides a cross section of course, section, and term.
 |5|sectionName|**(REQUIRED)** The Name of the Section for this Course.|String|
 |6|sectionGradeLevel|The grade level of this section. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
 |7|courseName|The course name for this section.|String|
-|8|courseNumber|The school-defined course code for this section|String|
+|8|courseNumber|The district-defined course code for this section|String|
 |9|stateCourseNumber|The state-defined course code for this section|String|
 |9|Period|The bell schedule information for section.|String|
 |10|Subject|The subject matter area for this section.|String|
