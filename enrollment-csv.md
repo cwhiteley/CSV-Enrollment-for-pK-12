@@ -1,16 +1,18 @@
 
 
 ###Table of contents
-[[toc]]
+- [Introduction](#Introduction)
+- [Overview](#Overview)
+- [School.CSV](#schools.csv)
 
-##Introduction
+## Introduction
 The comma seperated value format (CSV) has been used for exchanging and converting student data between various application for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
 
-##Overview
+## Overview
 ###Audience
 This document is intended for technical users responsible for interoperability and data sharing between application in the pK-12 environment.
 
-###Purpose
+### Purpose
 While numerous private specifications exist for various programs and systems, there is no single "master" specification for this format. This document provides specifications and guidance for developing formatted pK-12 student enrollment data. Due to lack of a single specification, there are considerable differences among implementations.
 
 ###Relationship of CSV
@@ -39,7 +41,7 @@ After the header record, the CSV file is made up of one or more data records. A 
 ##Parsing cells
 You should review the W3C document "[Metadata Vocabulary for Tabular Data](http://www.w3.org/TR/2014/WD-tabular-metadata-20140710/#parsing-cells)" section 3.8.5 Parsing cells. 
 
-##schools.csv
+## schools.csv
 The school.csv collects school level information catagorized by district name and contains one or many schools. If the NCESId is provided you can collect additional information about the school and district by searching the [NCES data collection](http://nces.ed.gov/ccd/schoolsearch/) with the provided NCESId  
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
