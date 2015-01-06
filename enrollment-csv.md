@@ -1,14 +1,3 @@
-
-
-###Table of contents
-- [**Introduction**](#introduction)
-- [**Overview**](#overview)
-- [**Schools.csv**](#schools)
-- [**Section.csv**](#section)
-- [**Student.csv**](#student)
-- [**Teacher.csv**](#teacher)
-- [**Enrollment.csv**](#enrollment)
-
 ## Introduction
 The comma seperated value format (CSV) has been used for exchanging and converting student data between various application for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
 
@@ -19,8 +8,8 @@ This document is intended for technical users responsible for interoperability a
 ### Purpose
 While numerous private specifications exist for various programs and systems, there is no single "master" specification for this format. This document provides specifications and guidance for developing formatted pK-12 student enrollment data. Due to lack of a single specification, there are considerable differences among implementations.
 
-###Relationship of CSV
-![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL-district]->[SECTION-course-term], [SECTION-course-term]->[TEACHER], [SCHOOL-district]->[ENROLLMENT], [SECTION-course-term]->[ENROLLMENT], [ENROLLMENT]->[STUDENT])
+###Relationship of CSV files
+![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
 
 ##CSV Import Format
 The first record in a CSV file **must** be a header record containing field names. Field names are seperated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
