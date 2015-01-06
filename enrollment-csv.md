@@ -1,7 +1,7 @@
 
 
 ###Table of contents
-[TOC]
+[[toc]]
 
 ##Introduction
 The comma seperated value format (CSV) has been used for exchanging and converting student data between various application for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
