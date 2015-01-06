@@ -1,13 +1,13 @@
 
 
 ###Table of contents
-- [Introduction](#Introduction)
-[**Overview**](#overview)
-- [schools.csv](#)
-- [section.csv](#)
-- [student.csv](#)
-- [teacher.csv](#)
-- [enrollment.csv](#)
+- [**Introduction**](#introduction)
+- [**Overview**](#overview)
+- [**schools.csv**](#schools.csv)
+- [**section.csv**](#section.csv)
+- [**student.csv**](#student.csv)
+- [**teacher.csv**](#teacher.csv)
+- [**enrollment.csv**](#enrollment.csv)
 
 ## Introduction
 The comma seperated value format (CSV) has been used for exchanging and converting student data between various application for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
