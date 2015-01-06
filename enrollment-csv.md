@@ -14,7 +14,8 @@ This document is intended for technical users responsible for interoperability a
 While numerous private specifications exist for various programs and systems, there is no single "master" specification for this format. This document provides specifications and guidance for developing formatted pK-12 student enrollment data. Due to lack of a single specification, there are considerable differences among implementations.
 
 ###Relationship
-The image below shows the relationship between the CSV files
+The image below shows the relationship between the CSV files.
+
 ![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL-district]->[SECTION-course-term], [SECTION-course-term]->[TEACHER], [SCHOOL-district]->[ENROLLMENT], [SECTION-course-term]->[ENROLLMENT], [ENROLLMENT]->[STUDENT])
 
 ##CSV Import Format
