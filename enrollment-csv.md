@@ -13,10 +13,14 @@ This document is intended for technical users responsible for interoperability a
 ###Purpose
 While numerous private specifications exist for various programs and systems, there is no single "master" specification for this format. This document provides specifications and guidance for developing formatted pK-12 student enrollment data. Due to lack of a single specification, there are considerable differences among implementations.
 
+###Relationship
+The image below shows the relationship between the CSV files
+![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL-district]->[SECTION-course-term], [SECTION-course-term]->[TEACHER], [SCHOOL-district]->[ENROLLMENT], [SECTION-course-term]->[ENROLLMENT], [ENROLLMENT]->[STUDENT])
+
 ##CSV Import Format
 The first record in a CSV file **must** be a header record containing field names. Field names are seperated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
 
-> schoolId, sectionId, studentId, 
+> schoolId, sectionId, studentId 
 
 After the header record, the CSV file is made up of one or more data records. A data record is one line, contains values in one or more fields, separated by commas. 
 
@@ -33,18 +37,22 @@ After the header record, the CSV file is made up of one or more data records. A 
 > 2014-12-25
 + Data fields marked as Boolean can have a value of "Yes", "No", "Unknown", or empty
 
+##Parsing cells
+You should review the W3C document "[Metadata Vocabulary for Tabular Data](http://www.w3.org/TR/2014/WD-tabular-metadata-20140710/#parsing-cells)" section 3.8.5 Parsing cells. 
 
 ##schools.csv
-The school.csv file provides school level information with a linkage to additional data via either the districtName or NCESId
+The school.csv collects school level information catagorized by district name and contains one or many schools. If the NCESId is provided you can collect additional information about the school and district by searching the [NCES data collection](http://nces.ed.gov/ccd/schoolsearch/) with the provided NCESId  
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type |
-|:-:|:------|:---|:---:|:---:|
+![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
+
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
+|:-:|:------|:---|:---:|:---:|:---:|
 |1|schoolId| **(REQUIRED)** School's local id and must be unique across the district. Must not change. **(Unique)(Key)**| String|
 |2|schoolName| **(REQUIRED)** The name of the school.|String|
 |3|schoolFocus|The type of educational institution as classified by its focus <ul><li>"Regular"</li><li>"SpecialEd"</li><li>"Vocational"</li><li>"Alternative"</li><li>"Magnet"</li><li>"Charter"</li><li>"Private"</li></ul>|enum|
 |4|title1Status|Status of the school's Title 1 elegibitily <ul><li>"Targeted"</li><li>"SchoolWide"</li><li>"NA"</li></ul>|enum|
-|5|districtName| The name of the school district|String|
-|6|NCESId| 12 digit federal identication number assigned by the National Center for Education Statistics for this school.|String|
+|5|districtName| The district name for the school record.|String|
+|6|NCESId| 12 digit federal identication number assigned by the National Center for Education Statistics for this school record.|String|
 |7|schoolAddress| School's address|String|
 |8|schoolCity| The city part of the school's address|String|
 |9|schoolState| Two letter addreviation for the state.|String|
@@ -57,10 +65,21 @@ The school.csv file provides school level information with a linkage to addition
 
 
 ##section.csv
-The section.csv file provides a cross section of course, section, and term.
+The section.csv file provides a cross section of course, section, and term. Within SIF, Ed-Fi, and CEDS these would be normalized into seperate objects. We have denormalized the relatinship to simplify the delivery of data.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type |
-|:-:|:------|:---|:---:|:---:|
+![course->section](http://yuml.me/diagram/scruffy/class/[course]<>1->*[section])
+
+###Section Use Case:
++ Base Rule
+> Students do not attend courses, they attend sections of a course.
++ Elementary
+> Elementary student typically attend an all day class which cover multiple subjects. You can find this data represented as follows: 
+> >1. The student will attend a course with a single section for each student.
+> >2. The student will attend a courses with multiple sections for each student.
+> >3. The student will attend multiple course with multiple section for each student. 
+
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
+|:-:|:------|:---|:---:|:---:|:---:|
 |1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String|
 |2|sectionId|**(REQUIRED)** Sections Id and must be uniq across the district. Must not change. **(Unique)(Key)**|String|
 |3|schoolYear| The School year for which the information is applicable, format "YYYY", e.g. 2014 for 2013-14|String|
@@ -79,8 +98,8 @@ The section.csv file provides a cross section of course, section, and term.
 ##student.csv
 The student.csv provides details about each of the students within our enrollment records.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type |
-|:-:|:------|:---|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
+|:-:|:------|:---|:---:|:---:|:---:|
 |1|studentId| **(REQUIRED)** Student's local id and must be unique across the district. Must not change. **(Unique)(Key)**|String|
 |2|studentStateId|Student's state id and must be unique across the district. **(Unique)**|String|
 |3|firstName| **(REQUIRED)** The given name of the student |String|
@@ -106,8 +125,8 @@ The student.csv provides details about each of the students within our enrollmen
 ##teacher.csv
 The teacher.csv provides details about each of the teachers within our enrollment records.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type |
-|:-:|:------|:---|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
+|:-:|:------|:---|:---:|:---:|:---:|
 |1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String|
 |2|teacherStateId|Student's state id and must be unique across the district. **(Unique)**|String|
 |3|firstName| **(REQUIRED)** The first name of the teacher. |String|
@@ -123,8 +142,8 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 ##enrollment.csv
 This file defines the information related to a students enrollmentin a section of a course.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type |
-|:-:|:------|:---|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
+|:-:|:------|:---|:---:|:---:|:---:|
 |1|schoolId| **(REQUIRED)** Must match a schoolId from the schools.csv file. **(Unique)** **(Key)**|String|
 |2|sectionId| **(REQUIRED)** Must match a sectionId from the section.csv file. **(Unique)** **(Key)**|String|
 |3|studentId| **(REQUIRED)** Must match a studentId from the student.csv file. **(Unique)** **(Key)**|String|
