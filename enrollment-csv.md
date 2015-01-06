@@ -39,7 +39,7 @@ After the header record, the CSV file is made up of one or more data records. A 
 > "John ""The Original"" Doe"
 + Data fields that contain commas characters must be surrounded by double-quores.
 > "Apt 1234, 5th Street"
-+ Data fields marked as Date must be formated as a ISO 8601 Date YYYY-MM-DD.
++ Data fields marked as Date must be formatted as a ISO 8601 Date YYYY-MM-DD.
 > 2014-12-25
 + Data fields marked as Boolean can have a value of "Yes", "No", "Unknown", or empty
 
@@ -59,11 +59,11 @@ The school.csv collects school level information catagorized by district name an
 |4|title1Status|Status of the school's Title 1 elegibitily <ul><li>"Targeted"</li><li>"SchoolWide"</li><li>"NA"</li></ul>|enum|
 |5|districtName| The district name for the school record.|String|
 |6|NCESId| 12 digit federal identication number assigned by the National Center for Education Statistics for this school record.|String|
-|7|schoolAddress| School's address|String|
-|8|schoolCity| The city part of the school's address|String|
-|9|schoolState| Two letter addreviation for the state.|String|
-|10|schoolZip| 5 or 9 digit zip/postal code, with no punctuation.|Integer|
-|11|schoolPhone| 10 digit phone number, with no punctuation.|Integer|
+|7|address| School's address|String|
+|8|city| The city part of the school's address|String|
+|9|state| Two letter addreviation for the state.|String|
+|10|zip| 5 or 9 digit zip/postal code, with no punctuation.|Integer|
+|11|phone| 10 digit phone number, with no punctuation.|Integer|
 |12|lowGrade| The lowest grade served at this school.<ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |String|
 |13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
 |14|contactName| The name of the principal at this school|String|
@@ -111,10 +111,10 @@ The student.csv provides details about each of the students within our enrollmen
 |3|firstName| **(REQUIRED)** The given name of the student |String|
 |4|middleName|The middle name of the student|String|
 |5|lastName| **(REQUIRED)** The last name of the student|String|
-|6|studentUsername|The student's username for applications. |String|
-|7|studentPassword|The student's default passwords for applications. |String|
-|8|studentEmail|The Email address of the student|String|
-|9|gender|A student's gender. Full words and ALL CAPS <ul><li>"MALE"</li><li>"FEMALE"</li><li>UNKNOWN</li></ul>|enum|
+|6|username|The student's username for applications access. |String|
+|7|password|The student's default passwords for applications authentication. If you are using SAML you can leave blank. |String|
+|8|email|The Email address of the student|String|
+|9|gender|A student's gender. Full words. <ul><li>"Male"</li><li>"Female"</li><li>Unknown</li></ul>|enum|
 |10|DOB|This student's date of birth. The format should be ISO 8601 Date "YYYY-MM-DD"|String|
 |11|gradeLevel|The grade level of the student. <ul>Use:<li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
 |12|race|The general racial category of the individual student<ul><li>"American Indian or Alaska Native"</li><li>"Asian"</li><li>"Black"</li><li>"Native Hawaiian or Other Pacific Islander"</li><li>"White"</li></ul>|String|
@@ -139,10 +139,10 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 |3|firstName| **(REQUIRED)** The first name of the teacher. |String|
 |4|middleName|The middle name of the teacher. |String|
 |5|lastName| **(REQUIRED)** The given name of the teacher. |String|
-|6|teacherTitle|Title for this teacher.|String|
-|7|teacherUsername|The teacher's username for applications. |String|
-|8|teacherPassword|The teacher's default passwords for applications. |String|
-|9|teacherEmail|The Email address of the teacher|String|
+|6|title|Title for this teacher.|String|
+|7|username|The teacher's username for applications login. |String|
+|8|password|The teacher's default passwords for applications authentication. If you are using SAML you can leave blank.  |String|
+|9|email|The Email address of the teacher|String|
 
 
 
