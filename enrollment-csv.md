@@ -1,5 +1,5 @@
 ## Introduction
-The comma seperated value format (CSV) has been used for exchanging and converting student data between various application for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
+The comma separated value format (CSV) has been used for exchanging and converting student data between various applications for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
 
 ## Overview
 ###Audience
@@ -11,10 +11,10 @@ While numerous private specifications exist for various programs and systems, th
 ### Files
 This standard contains five CSV files, with the following filenames:
 
-|Name|Purpose|
-|:-:|:------|
-|schools.csv| provides school level information|
-|sections.csv| provides section level information|
+|Name|Purpose| Required Fields
+|:-:|:------|:-:|
+|schools.csv| provides school level information|2|
+|sections.csv| provides section level information|3|
 |students.csv| provides student level information|
 |teachers.csv| provides teacher level information|
 |enrollments.csv| provides student enrollment information|
@@ -24,7 +24,7 @@ This standard contains five CSV files, with the following filenames:
 ![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
 
 ##CSV Import Format
-The first record in a CSV file **must** be a header record containing field names. Field names are seperated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
+The first record in a CSV file **must** be a header record containing field names. Field names are separated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
 
 > schoolId, sectionId, studentId 
 
@@ -87,10 +87,10 @@ The section.csv file provides a cross section of course, section, and term. With
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
 |:-:|:------|:---|:---:|:---:|:---:|
 |1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String|
-|2|sectionId|**(REQUIRED)** Sections Id and must be uniq across the district. Must not change. **(Unique)(Key)**|String|
-|3|schoolYear| The School year for which the information is applicable, format "YYYY", e.g. 2014 for 2013-14|String|
-|4|teacherId|Token from the teacher.csv table linking the teacher id to a section.|String|
-|5|sectionName|**(REQUIRED)** The Name of the Section for this Course.|String|
+|2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String|
+|3|schoolYear|**(REQUIRED)** The school year for which the information is applicable, format "YYYY", e.g. 2014 for 2013-14|String|
+|4|teacherId|**(REQUIRED)**  Token from the teacher.csv table linking the teacher id to a section.|String|
+|5|sectionName|**(REQUIRED)** The name of the section for this course.|String|
 |6|sectionGradeLevel|The grade level of this section. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
 |7|courseName|The course name for this section.|String|
 |8|courseNumber|The district-defined course code for this section|String|
