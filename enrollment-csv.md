@@ -45,7 +45,7 @@ After the header record, the CSV file is made up of one or more data records. A 
 ### Parsing cells
 You should review the W3C document "[Metadata Vocabulary for Tabular Data](http://www.w3.org/TR/2014/WD-tabular-metadata-20140710/#parsing-cells)" section 3.8.5 Parsing cells. 
 
-## [schools.csv](#schools.csv)
+## schools.csv
 The school.csv collects school level information catagorized by district name and contains one or many schools. If the NCESId is provided you can collect additional information about the school and district by searching the [NCES data collection](http://nces.ed.gov/ccd/schoolsearch/) with the provided NCESId  
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
@@ -69,7 +69,7 @@ The school.csv collects school level information catagorized by district name an
 |15|contactEmail| The email address of the principal at this school|String|
 
 
-##section.csv
+## section.csv
 The section.csv file provides a cross section of course, section, and term. Within SIF, Ed-Fi, and CEDS these would be normalized into seperate objects. We have denormalized the relatinship to simplify the delivery of data.
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[course]<>1->*[section])
@@ -100,7 +100,7 @@ The section.csv file provides a cross section of course, section, and term. With
 |12|termStartDate|The Section end date. The format should be in "YYYY-MM-DD"|date|
 |13|termEndDate|The Section end date. The format should be in "YYYY-MM-DD"|date|
 
-##student.csv
+## student.csv
 The student.csv provides details about each of the students within our enrollment records.
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
@@ -127,7 +127,7 @@ The student.csv provides details about each of the students within our enrollmen
 |20|FRL|This student's lunch status? <ul><li>"Free"</li><li>"Reduced"</li><li>"No"</li></ul>|enum|
 
 
-##teacher.csv
+## teacher.csv
 The teacher.csv provides details about each of the teachers within our enrollment records.
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
@@ -144,7 +144,7 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 
 
 
-##enrollment.csv
+## enrollment.csv
 This file defines the information related to a students enrollmentin a section of a course.
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
