@@ -8,6 +8,18 @@ This document is intended for technical users responsible for interoperability a
 ### Purpose
 While numerous private specifications exist for various programs and systems, there is no single "master" specification for this format. This document provides specifications and guidance for developing formatted pK-12 student enrollment data. Due to lack of a single specification, there are considerable differences among implementations.
 
+### Files
+This standard contains five CSV files, with the following filenames:
+
+|Name|Purpose|
+|:-:|:------|
+|schools.csv| provides school level information|
+|sections.csv| provides section level information|
+|students.csv| provides student level information|
+|teachers.csv| provides teacher level information|
+|enrollments.csv| provides student enrollment information|
+
+
 ###Relationship of CSV files
 ![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
 
@@ -102,18 +114,19 @@ The student.csv provides details about each of the students within our enrollmen
 |6|studentUsername|The student's username for applications. |String|
 |7|studentPassword|The student's default passwords for applications. |String|
 |8|studentEmail|The Email address of the student|String|
-|9|gender|A student's gender. <ul><li>"Male"</li><li>"Female"</li><li>"Unknown"</li></ul>|enum|
+|9|gender|A student's gender. Full words and ALL CAPS <ul><li>"MALE"</li><li>"FEMALE"</li><li>UNKNOWN</li></ul>|enum|
 |10|DOB|This student's date of birth. The format should be ISO 8601 Date "YYYY-MM-DD"|String|
 |11|gradeLevel|The grade level of the student. <ul>Use:<li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
 |12|race|The general racial category of the individual student<ul><li>"American Indian or Alaska Native"</li><li>"Asian"</li><li>"Black"</li><li>"Native Hawaiian or Other Pacific Islander"</li><li>"White"</li></ul>|String|
-|13|hispanicLatino|An indication that the individual traces their origin or descent to Mexico, Puerto Rico, Cuba, Central or South America, or other Spanish cultures, regardless of race. <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|
-|14|ELL|Is the student an English Language Leaner under Title 3? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|
-|15|IDEA|Is the student IDEA eligible?  <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|
-|16|section504|Is this student Section 504 eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean|
-|17|IEP|Is this student IEP eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean|
-|18|homeless|Is the student homeless? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|
-|19|migrant|Is this a migrant student? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|
+|13|hispanicLatino|An indication that the individual traces their origin or descent to Mexico, Puerto Rico, Cuba, Central or South America, or other Spanish cultures, regardless of race. <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
+|14|ELL|Is the student an English Language Leaner under Title 3? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
+|15|IDEA|Is the student IDEA eligible?  <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
+|16|section504|Is this student Section 504 eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean|3|
+|17|IEP|Is this student IEP eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean|3|
+|18|homeless|Is the student homeless? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
+|19|migrant|Is this a migrant student? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
 |20|FRL|This student's lunch status? <ul><li>"Free"</li><li>"Reduced"</li><li>"No"</li></ul>|enum|
+|21|gradYear|This is the year the student will graduate. The format is a four digit year, ISO 8601 Date "YYYY"|String|4|
 
 
 ## teacher
