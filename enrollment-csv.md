@@ -1,3 +1,11 @@
+## TOC
+- [SCHOOLS](#schools)
+- [SECTIONS](#teacher)
+- [STUDENT](#teacher)
+- [TEACHERS](#teacher)
+- [ENROLLMENT](#enrollent)
+
+ 
 ## Introduction
 The comma separated value format (CSV) has been used for exchanging and converting student data between various applications for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
 
@@ -46,6 +54,7 @@ After the header record, the CSV file is made up of one or more data records. A 
 ### Parsing cells
 You should review the W3C document "[Metadata Vocabulary for Tabular Data](http://www.w3.org/TR/2014/WD-tabular-metadata-20140710/#parsing-cells)" section 3.8.5 Parsing cells. 
 
+<a id='schools'></a>
 ## schools
 The school.csv collects school level information catagorized by district name and contains one or many schools. If the NCESId is provided you can collect additional information about the school and district by searching the [NCES data collection](http://nces.ed.gov/ccd/schoolsearch/) with the provided NCESId  
 
@@ -69,7 +78,7 @@ The school.csv collects school level information catagorized by district name an
 |14|contactName| The name of the principal at this school|String|
 |15|contactEmail| The email address of the principal at this school|String|
 
-
+<a id='section'></a>
 ## section
 The section.csv file provides a cross section of course, section, and term. Within SIF, Ed-Fi, and CEDS these would be normalized into seperate objects. We have denormalized the relatinship to simplify the delivery of data.
 
@@ -101,6 +110,7 @@ The section.csv file provides a cross section of course, section, and term. With
 |12|termStartDate|The Section end date. The format should be in "YYYY-MM-DD"|date|
 |13|termEndDate|The Section end date. The format should be in "YYYY-MM-DD"|date|
 
+<a id='student'></a>
 ## student
 The student.csv provides details about each of the students within our enrollment records.
 
@@ -128,8 +138,8 @@ The student.csv provides details about each of the students within our enrollmen
 |20|FRL|This student's lunch status? <ul><li>"Free"</li><li>"Reduced"</li><li>"No"</li></ul>|enum|
 |21|gradYear|This is the year the student will graduate. The format is a four digit year, ISO 8601 Date "YYYY"|String|4|
 
-
-## teacher
+<a id='teacher'></a>
+## teacher.csv
 The teacher.csv provides details about each of the teachers within our enrollment records.
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
@@ -145,7 +155,7 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 |9|email|The Email address of the teacher|String|
 
 
-
+<a id='enrollment'></a>
 ## enrollment
 This file defines the information related to a students enrollmentin a section of a course.
 
