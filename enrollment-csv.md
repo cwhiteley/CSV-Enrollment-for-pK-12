@@ -40,17 +40,6 @@ Criteria to determine data classification levels for student enrollment data.
 | Internal| any information that is not generally available to the public, but my be subject to open records disclosure.<br/> Example: Email correspondance, student id, staff id, non public reports, personal contact information.|
 | Restricted | any information that otherwise qualifies as prohibited, but would significantly reduce the effectiveness of faculty, staff, or students when acting in support of the districts mission. <br/>Example: Salary, birth date|
 | Prohibited| any information where the protection of the information is required by law/regulation or is required to self-report to the government and or provide notice to the individual if information is inappropriatedly accessed. <br/>Example: social security number, driver's license numbers, insurance policy id numbers|
-  
-
-##Privacy
-This area will define the Privacy assigned the data elements.
-
-|Classification|Description|
-|:--|:---|
-|name|description |
-|name|description |
-|name|description |
-|name|description |
 
 ##CSV Import Format
 The first record in a CSV file **must** be a header record containing field names. Field names are separated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
