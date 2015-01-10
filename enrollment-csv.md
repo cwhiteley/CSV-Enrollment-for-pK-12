@@ -31,6 +31,27 @@ This standard contains five CSV files, with the following filenames:
 ###Relationship of CSV files
 ![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
 
+##Data Classification
+Criteria to determine data classification levels for student enrollment data.
+
+|Classification|Description|
+|:--|:---|
+| Public| any information that was not considered "Internal", "Sensitive", or "Restricted". |
+| Internal| any information that is not generally available to the public, but my be subject to open records disclosure.<br/> Example: Email correspondance, student id, staff id, non public reports, personal contact information.|
+| Restricted | any information that otherwise qualifies as prohibited, but would significantly reduce the effectiveness of faculty, staff, or students when acting in support of the districts mission. <br/>Example: Salary, birth date|
+| Prohibited| any information where the protection of the information is required by law/regulation or is required to self-report to the government and or provide notice to the individual if information is inappropriatedly accessed. <br/>Example: social security number, driver's license numbers, insurance policy id numbers|
+  
+
+##Privacy
+This area will define the Privacy assigned the data elements.
+
+|Classification|Description|
+|:--|:---|
+|name|description |
+|name|description |
+|name|description |
+|name|description |
+
 ##CSV Import Format
 The first record in a CSV file **must** be a header record containing field names. Field names are separated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
 
@@ -60,8 +81,8 @@ The school.csv collects school level information catagorized by district name an
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
-|:-:|:------|:---|:---:|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|:-:|:------|:---|:---:|:--:|:--:|:--|:--|
 |1|schoolId| **(REQUIRED)** School's local id and must be unique across the district. Must not change. **(Unique)(Key)**| String|
 |2|schoolName| **(REQUIRED)** The name of the school.|String|
 |3|schoolFocus|The type of educational institution as classified by its focus <ul><li>"Regular"</li><li>"SpecialEd"</li><li>"Vocational"</li><li>"Alternative"</li><li>"Magnet"</li><li>"Charter"</li><li>"Private"</li></ul>|enum|
@@ -93,8 +114,8 @@ The section.csv file provides a cross section of course, section, and term. With
 > >2. The student will attend a courses with multiple sections for each student.
 > >3. The student will attend multiple course with multiple section for each student. 
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
-|:-:|:------|:---|:---:|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|:-:|:------|:---|:---:|:--:|:--:|:--|:--|
 |1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String|
 |2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String|
 |3|schoolYear|**(REQUIRED)** The school year for which the information is applicable, format "YYYY", e.g. 2014 for 2013-14|String|
@@ -114,8 +135,8 @@ The section.csv file provides a cross section of course, section, and term. With
 ## student
 The student.csv provides details about each of the students within our enrollment records.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
-|:-:|:------|:---|:---:|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification | Privacy | Classification |
+|:-:|:------|:---|:---:|:--:|:--:|:--|:--|:--|:--|
 |1|studentId| **(REQUIRED)** Student's local id and must be unique across the district. Must not change. **(Unique)(Key)**|String|
 |2|studentStateId|Student's state id and must be unique across the district. **(Unique)**|String|
 |3|firstName| **(REQUIRED)** The given name of the student |String|
@@ -142,8 +163,8 @@ The student.csv provides details about each of the students within our enrollmen
 ## teacher.csv
 The teacher.csv provides details about each of the teachers within our enrollment records.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
-|:-:|:------|:---|:---:|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|:-:|:------|:---|:-:|:--:|:--:|:--|:--|
 |1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String|
 |2|teacherStateId|Student's state id and must be unique across the district. **(Unique)**|String|
 |3|firstName| **(REQUIRED)** The first name of the teacher. |String|
@@ -159,8 +180,8 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 ## enrollment
 This file defines the information related to a students enrollmentin a section of a course.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length |
-|:-:|:------|:---|:---:|:---:|:---:|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|:-:|:------|:---|:---:|:--:|:--:|:--|:--|
 |1|schoolId| **(REQUIRED)** Must match a schoolId from the schools.csv file. **(Unique)** **(Key)**|String|
 |2|sectionId| **(REQUIRED)** Must match a sectionId from the section.csv file. **(Unique)** **(Key)**|String|
 |3|studentId| **(REQUIRED)** Must match a studentId from the student.csv file. **(Unique)** **(Key)**|String|
