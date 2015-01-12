@@ -105,10 +105,10 @@ The section.csv file provides a cross section of course, section, and term. With
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
-|1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String| PUBLIC |
-|2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String| PUBLIC |
-|3|schoolYear|**(REQUIRED)** The school year for which the information is applicable, PUBLIC | format "YYYY", e.g. 2014 for 2013-14|String| PUBLIC |
-|4|teacherId|**(REQUIRED)**  Token from the teacher.csv table linking the teacher id to a section.|String| PUBLIC |
+|1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String| INTERNAL |
+|2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String| INTERNAL |
+|3|schoolYear|**(REQUIRED)** The school year for which the information is applicable, format "YYYY", e.g. 2014 for 2013-14| String | PUBLIC |
+|4|teacherId|**(REQUIRED)**  Token from the teacher.csv table linking the teacher id to a section.|String| RESTRICTED |
 |5|sectionName|**(REQUIRED)** The name of the section for this course.|String| PUBLIC |
 |6|sectionGradeLevel|The grade level of this section. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String| PUBLIC |
 |7|courseName|The course name for this section.|String| PUBLIC |
@@ -154,7 +154,7 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:-:|:--:|:--:|:--|:--|
-|1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String| INTERNAL |
+|1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String| RESTRICTED |
 |2|teacherStateId|Student's state id and must be unique across the district. **(Unique)**|String| INTERNAL |
 |3|firstName| **(REQUIRED)** The first name of the teacher. |String| RESTRICTED |
 |4|middleName|The middle name of the teacher. |String| RESTRICTED |
