@@ -70,23 +70,23 @@ The school.csv collects school level information catagorized by district name an
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
-|1|schoolId| **(REQUIRED)** School's local id and must be unique across the district. Must not change. **(Unique)(Key)**| String|
-|2|schoolName| **(REQUIRED)** The name of the school.|String|
-|3|schoolFocus|The type of educational institution as classified by its focus <ul><li>"Regular"</li><li>"SpecialEd"</li><li>"Vocational"</li><li>"Alternative"</li><li>"Magnet"</li><li>"Charter"</li><li>"Private"</li></ul>|enum|
-|4|title1Status|Status of the school's Title 1 elegibitily <ul><li>"Targeted"</li><li>"SchoolWide"</li><li>"NA"</li></ul>|enum|
-|5|districtName| The district name for the school record.|String|
-|6|NCESId| 12 digit federal identication number assigned by the National Center for Education Statistics for this school record.|String|
-|7|address| School's address|String|
-|8|city| The city part of the school's address|String|
-|9|state| Two letter addreviation for the state.|String|
-|10|zip| 5 or 9 digit zip/postal code, with no punctuation.|Integer|
-|11|phone| 10 digit phone number, with no punctuation.|Integer|
-|12|lowGrade| The lowest grade served at this school.<ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |String|
-|13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
-|14|contactName| The name of the principal at this school|String|
-|15|contactEmail| The email address of the principal at this school|String|
+|1|schoolId| **(REQUIRED)** School's local id and must be unique across the district. Must not change. **(Unique)(Key)**| VARCHAR(100) |
+|2|schoolName| **(REQUIRED)** The name of the school.|VARCHAR(100)|
+|3|schoolFocus|The type of educational institution as classified by its focus <ul><li>"Regular"</li><li>"SpecialEd"</li><li>"Vocational"</li><li>"Alternative"</li><li>"Magnet"</li><li>"Charter"</li><li>"Private"</li></ul>|ENUM|
+|4|title1Status|Status of the school's Title 1 elegibitily <ul><li>"Targeted"</li><li>"SchoolWide"</li><li>"NA"</li></ul>|ENUM|
+|5|districtName| The district name for the school record.|VARCHAR(100)|
+|6|NCESId| 12 digit federal identication number assigned by the National Center for Education Statistics for this school record.|VARCHAR(12)|
+|7|address| School's address|VARCHAR(100)|
+|8|city| The city part of the school's address|VARCHAR(100)|
+|9|state| Two letter addreviation for the state.|VARCHAR(2)|
+|10|zip| 5 or 9 digit zip/postal code, with no punctuation.|VARCHAR(9)|
+|11|phone| 10 digit phone number, with no punctuation.|VARCHAR(10)|
+|12|lowGrade| The lowest grade served at this school.<ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |VARCHAR(10)|
+|13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|VARCHAR(10)|
+|14|contactName| The name of the principal at this school|VARCHAR(100)|
+|15|contactEmail| The email address of the principal at this school|VARCHAR(100)|
 
 <a id='section'></a>
 ## section
@@ -103,7 +103,7 @@ The section.csv file provides a cross section of course, section, and term. With
 > >2. The student will attend a courses with multiple sections for each student.
 > >3. The student will attend multiple course with multiple section for each student. 
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
 |1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String|
 |2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String|
@@ -124,8 +124,8 @@ The section.csv file provides a cross section of course, section, and term. With
 ## student
 The student.csv provides details about each of the students within our enrollment records.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification | Privacy | Classification |
-|:-:|:------|:---|:---:|:--:|:--:|:--|:--|:--|:--|
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
+|:-:|:------|:---|:---:|:--:|
 |1|studentId| **(REQUIRED)** Student's local id and must be unique across the district. Must not change. **(Unique)(Key)**|String|
 |2|studentStateId|Student's state id and must be unique across the district. **(Unique)**|String|
 |3|firstName| **(REQUIRED)** The given name of the student |String|
