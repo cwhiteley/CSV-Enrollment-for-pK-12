@@ -37,9 +37,9 @@ Criteria to determine data classification levels for student enrollment data.
 |Classification|Description|
 |:--|:---|
 | Public| any information that was not considered "Internal", "Sensitive", or "Restricted". |
-| Internal| any information that is not generally available to the public, but my be subject to open records disclosure.<br/> Example: Email correspondance, student id, staff id, non public reports, personal contact information.|
-| Restricted | any information that otherwise qualifies as prohibited, but would significantly reduce the effectiveness of faculty, staff, or students when acting in support of the districts mission. <br/>Example: Salary, birth date|
-| Prohibited| any information where the protection of the information is required by law/regulation or is required to self-report to the government and or provide notice to the individual if information is inappropriatedly accessed. <br/>Example: social security number, driver's license numbers, insurance policy id numbers|
+| Internal| any information that is not generally available to the public, but my be subject to open records disclosure.|
+| Restricted | any information that otherwise qualifies as prohibited, but would significantly reduce the effectiveness of faculty, staff, or students when acting in support of the districts mission.|
+| Prohibited| any information where the protection of the information is required by law/regulation or is required to self-report to the government and or provide notice to the individual if information is inappropriatedly accessed.|
 
 ##CSV Import Format
 The first record in a CSV file **must** be a header record containing field names. Field names are separated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
@@ -72,21 +72,21 @@ The school.csv collects school level information catagorized by district name an
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
-|1|schoolId| **(REQUIRED)** School's local id and must be unique across the district. Must not change. **(Unique)(Key)**| VARCHAR(100) |
-|2|schoolName| **(REQUIRED)** The name of the school.|VARCHAR(100)|
-|3|schoolFocus|The type of educational institution as classified by its focus <ul><li>"Regular"</li><li>"SpecialEd"</li><li>"Vocational"</li><li>"Alternative"</li><li>"Magnet"</li><li>"Charter"</li><li>"Private"</li></ul>|ENUM|
-|4|title1Status|Status of the school's Title 1 elegibitily <ul><li>"Targeted"</li><li>"SchoolWide"</li><li>"NA"</li></ul>|ENUM|
-|5|districtName| The district name for the school record.|VARCHAR(100)|
-|6|NCESId| 12 digit federal identication number assigned by the National Center for Education Statistics for this school record.|VARCHAR(12)|
-|7|address| School's address|VARCHAR(100)|
-|8|city| The city part of the school's address|VARCHAR(100)|
-|9|state| Two letter addreviation for the state.|VARCHAR(2)|
-|10|zip| 5 or 9 digit zip/postal code, with no punctuation.|VARCHAR(9)|
-|11|phone| 10 digit phone number, with no punctuation.|VARCHAR(10)|
-|12|lowGrade| The lowest grade served at this school.<ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |VARCHAR(10)|
-|13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|VARCHAR(10)|
-|14|contactName| The name of the principal at this school|VARCHAR(100)|
-|15|contactEmail| The email address of the principal at this school|VARCHAR(100)|
+|1|schoolId| **(REQUIRED)** School's local id and must be unique across the district. Must not change. **(Unique)(Key)**| VARCHAR(100) | PUBLIC |
+|2|schoolName| **(REQUIRED)** The name of the school.|VARCHAR(100)| PUBLIC |
+|3|schoolFocus|The type of educational institution as classified by its focus <ul><li>"Regular"</li><li>"SpecialEd"</li><li>"Vocational"</li><li>"Alternative"</li><li>"Magnet"</li><li>"Charter"</li><li>"Private"</li></ul>|ENUM| PUBLIC |
+|4|title1Status|Status of the school's Title 1 elegibitily <ul><li>"Targeted"</li><li>"SchoolWide"</li><li>"NA"</li></ul>|ENUM| PUBLIC |
+|5|districtName| The district name for the school record.|VARCHAR(100)| PUBLIC |
+|6|NCESId| 12 digit federal identication number assigned by the National Center for Education Statistics for this school record.|VARCHAR(12)| PUBLIC |
+|7|address| School's address|VARCHAR(100)| PUBLIC |
+|8|city| The city part of the school's address|VARCHAR(100)| PUBLIC |
+|9|state| Two letter addreviation for the state.|VARCHAR(2)| PUBLIC |
+|10|zip| 5 or 9 digit zip/postal code, with no punctuation.|VARCHAR(9)| PUBLIC |
+|11|phone| 10 digit phone number, with no punctuation.|VARCHAR(10)| PUBLIC |
+|12|lowGrade| The lowest grade served at this school.<ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |VARCHAR(10)| PUBLIC |
+|13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|VARCHAR(10)| PUBLIC |
+|14|contactName| The name of the principal at this school|VARCHAR(100)| PUBLIC |
+|15|contactEmail| The email address of the principal at this school|VARCHAR(100)| PUBLIC |
 
 <a id='section'></a>
 ## section
@@ -105,20 +105,20 @@ The section.csv file provides a cross section of course, section, and term. With
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
-|1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String|
-|2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String|
-|3|schoolYear|**(REQUIRED)** The school year for which the information is applicable, format "YYYY", e.g. 2014 for 2013-14|String|
-|4|teacherId|**(REQUIRED)**  Token from the teacher.csv table linking the teacher id to a section.|String|
-|5|sectionName|**(REQUIRED)** The name of the section for this course.|String|
-|6|sectionGradeLevel|The grade level of this section. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
-|7|courseName|The course name for this section.|String|
-|8|courseNumber|The district-defined course code for this section|String|
-|9|stateCourseNumber|The state-defined course code for this section|String|
-|9|Period|The bell schedule information for section.|String|
-|10|Subject|The subject matter area for this section.|String|
-|11|termName|The text based name for the Term this section resides in.|String|
-|12|termStartDate|The Section end date. The format should be in "YYYY-MM-DD"|date|
-|13|termEndDate|The Section end date. The format should be in "YYYY-MM-DD"|date|
+|1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String| PUBLIC |
+|2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String| PUBLIC |
+|3|schoolYear|**(REQUIRED)** The school year for which the information is applicable, PUBLIC | format "YYYY", e.g. 2014 for 2013-14|String| PUBLIC |
+|4|teacherId|**(REQUIRED)**  Token from the teacher.csv table linking the teacher id to a section.|String| PUBLIC |
+|5|sectionName|**(REQUIRED)** The name of the section for this course.|String| PUBLIC |
+|6|sectionGradeLevel|The grade level of this section. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String| PUBLIC |
+|7|courseName|The course name for this section.|String| PUBLIC |
+|8|courseNumber|The district-defined course code for this section|String| PUBLIC |
+|9|stateCourseNumber|The state-defined course code for this section|String| PUBLIC |
+|9|Period|The bell schedule information for section.|String| PUBLIC |
+|10|Subject|The subject matter area for this section.|String| PUBLIC |
+|11|termName|The text based name for the Term this section resides in.|String| PUBLIC |
+|12|termStartDate|The Section end date. The format should be in "YYYY-MM-DD"|date| PUBLIC |
+|13|termEndDate|The Section end date. The format should be in "YYYY-MM-DD"|date| PUBLIC |
 
 <a id='student'></a>
 ## student
@@ -126,51 +126,51 @@ The student.csv provides details about each of the students within our enrollmen
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|
-|1|studentId| **(REQUIRED)** Student's local id and must be unique across the district. Must not change. **(Unique)(Key)**|String|
-|2|studentStateId|Student's state id and must be unique across the district. **(Unique)**|String|
-|3|firstName| **(REQUIRED)** The given name of the student |String|
-|4|middleName|The middle name of the student|String|
-|5|lastName| **(REQUIRED)** The last name of the student|String|
-|6|username|The student's username for applications access. |String|
-|7|password|The student's default passwords for applications authentication. If you are using SAML you can leave blank. |String|
-|8|email|The Email address of the student|String|
-|9|gender|A student's gender. Full words. <ul><li>"Male"</li><li>"Female"</li><li>Unknown</li></ul>|enum|
-|10|DOB|This student's date of birth. The format should be ISO 8601 Date "YYYY-MM-DD"|String|
-|11|gradeLevel|The grade level of the student. <ul>Use:<li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|
-|12|race|The general racial category of the individual student<ul><li>"American Indian or Alaska Native"</li><li>"Asian"</li><li>"Black"</li><li>"Native Hawaiian or Other Pacific Islander"</li><li>"White"</li></ul>|String|
-|13|hispanicLatino|An indication that the individual traces their origin or descent to Mexico, Puerto Rico, Cuba, Central or South America, or other Spanish cultures, regardless of race. <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
-|14|ELL|Is the student an English Language Leaner under Title 3? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
-|15|IDEA|Is the student IDEA eligible?  <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
-|16|section504|Is this student Section 504 eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean|3|
-|17|IEP|Is this student IEP eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean|3|
-|18|homeless|Is the student homeless? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
-|19|migrant|Is this a migrant student? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean|3|
-|20|FRL|This student's lunch status? <ul><li>"Free"</li><li>"Reduced"</li><li>"No"</li></ul>|enum|
-|21|gradYear|This is the year the student will graduate. The format is a four digit year, ISO 8601 Date "YYYY"|String|4|
+|1|studentId| **(REQUIRED)** Student's local id and must be unique across the district. Must not change. **(Unique)(Key)**|String| RESTRICTED |
+|2|studentStateId|Student's state id and must be unique across the district. **(Unique)**|String| RESTRICTED |
+|3|firstName| **(REQUIRED)** The given name of the student |String| RESTRICTED |
+|4|middleName|The middle name of the student|String| RESTRICTED |
+|5|lastName| **(REQUIRED)** The last name of the student|String| RESTRICTED |
+|6|username|The student's username for applications access. |String| RESTRICTED |
+|7|password|The student's default passwords for applications authentication. If you are using SAML you can leave blank. |String| RESTRICTED |
+|8|email|The Email address of the student|String| RESTRICTED |
+|9|gender|A student's gender. Full words. <ul><li>"Male"</li><li>"Female"</li><li>Unknown</li></ul>|enum| RESTRICTED |
+|10|DOB|This student's date of birth. The format should be ISO 8601 Date "YYYY-MM-DD"|String|  RESTRICTED |
+|11|gradeLevel|The grade level of the student. <ul>Use:<li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|String|  RESTRICTED |
+|12|race|The general racial category of the individual student<ul><li>"American Indian or Alaska Native"</li><li>"Asian"</li><li>"Black"</li><li>"Native Hawaiian or Other Pacific Islander"</li><li>"White"</li></ul>|String|  RESTRICTED |
+|13|hispanicLatino|An indication that the individual traces their origin or descent to Mexico, Puerto Rico, Cuba, Central or South America, or other Spanish cultures, regardless of race. <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean| RESTRICTED |
+|14|ELL|Is the student an English Language Leaner under Title 3? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean| RESTRICTED |
+|15|IDEA|Is the student IDEA eligible?  <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean| RESTRICTED |
+|16|section504|Is this student Section 504 eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean| RESTRICTED |
+|17|IEP|Is this student IEP eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean| RESTRICTED |
+|18|homeless|Is the student homeless? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean| RESTRICTED |
+|19|migrant|Is this a migrant student? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean| RESTRICTED |
+|20|FRL|This student's lunch status? <ul><li>"Free"</li><li>"Reduced"</li><li>"No"</li></ul>|enum| RESTRICTED |
+|21|gradYear|This is the year the student will graduate. The format is a four digit year, ISO 8601 Date "YYYY"|String| RESTRICTED |
 
 <a id='teacher'></a>
 ## teacher.csv
 The teacher.csv provides details about each of the teachers within our enrollment records.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:-:|:--:|:--:|:--|:--|
-|1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String|
-|2|teacherStateId|Student's state id and must be unique across the district. **(Unique)**|String|
-|3|firstName| **(REQUIRED)** The first name of the teacher. |String|
-|4|middleName|The middle name of the teacher. |String|
-|5|lastName| **(REQUIRED)** The given name of the teacher. |String|
-|6|title|Title for this teacher.|String|
-|7|username|The teacher's username for applications login. |String|
-|8|password|The teacher's default passwords for applications authentication. If you are using SAML you can leave blank.  |String|
-|9|email|The Email address of the teacher|String|
+|1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String| INTERNAL |
+|2|teacherStateId|Student's state id and must be unique across the district. **(Unique)**|String| INTERNAL |
+|3|firstName| **(REQUIRED)** The first name of the teacher. |String| RESTRICTED |
+|4|middleName|The middle name of the teacher. |String| RESTRICTED |
+|5|lastName| **(REQUIRED)** The given name of the teacher. |String| RESTRICTED |
+|6|title|Title for this teacher.|String| PUBLIC |
+|7|username|The teacher's username for applications login. |String| RESTRICTED |
+|8|password|The teacher's default passwords for applications authentication. If you are using SAML you can leave blank.  |String| RESTRICTED |
+|9|email|The Email address of the teacher|String| PUBLIC |
 
 
 <a id='enrollment'></a>
 ## enrollment
 This file defines the information related to a students enrollmentin a section of a course.
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Length | Privacy | Classification |
+|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
-|1|schoolId| **(REQUIRED)** Must match a schoolId from the schools.csv file. **(Unique)** **(Key)**|String|
-|2|sectionId| **(REQUIRED)** Must match a sectionId from the section.csv file. **(Unique)** **(Key)**|String|
-|3|studentId| **(REQUIRED)** Must match a studentId from the student.csv file. **(Unique)** **(Key)**|String|
+|1|schoolId| **(REQUIRED)** Must match a schoolId from the schools.csv file. **(Unique)** **(Key)**|String| INTERNAL |
+|2|sectionId| **(REQUIRED)** Must match a sectionId from the section.csv file. **(Unique)** **(Key)**|String| INTERNAL |
+|3|studentId| **(REQUIRED)** Must match a studentId from the student.csv file. **(Unique)** **(Key)**|String| RESTRICTED |
