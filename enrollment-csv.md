@@ -20,12 +20,12 @@ While numerous private specifications exist for various programs and systems, th
 This standard contains five CSV files, with the following filenames:
 
 |Name|Purpose| Required Fields
-|:-:|:------|:-:|
-|schools.csv| provides school level information|2|
-|sections.csv| provides section level information|3|
-|students.csv| provides student level information|
-|teachers.csv| provides teacher level information|
-|enrollments.csv| provides student enrollment information|
+|:-:|:------|:--|
+|schools.csv| provides school level information| schoolId, schoolName|
+|sections.csv| provides section level information| schoolId, sectionId, schoolYear, teacherId, sectionName|
+|students.csv| provides student level information| studentId, firstName, lastName |
+|teachers.csv| provides teacher level information| teacherId, firstName, lastName |
+|enrollments.csv| provides student enrollment information| schoolId, sectionId, studentId |
 
 
 ###Relationship of CSV files
