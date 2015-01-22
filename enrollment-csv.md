@@ -1,4 +1,4 @@
-## TOC
+## TABLE OF CONTENT
 - [SCHOOLS](#schools)
 - [SECTIONS](#teacher)
 - [STUDENT](#teacher)
@@ -16,10 +16,13 @@ This document is intended for technical users responsible for interoperability a
 ### Purpose
 While numerous private specifications exist for various programs and systems, there is no single "master" specification for this format. This document provides specifications and guidance for developing formatted pK-12 student enrollment data. Due to lack of a single specification, there are considerable differences among implementations.
 
+### Data Alignment
+The data elements contained with this this specification has been aligned with the School Interoperability Framework US 3.1 Data Model. This means that CEDS and Ed-Fi can be easily mapped to if your are inclided to use there data models.
+
 ### Files
 This standard contains five CSV files, with the following filenames:
 
-|Name|Purpose| Required Fields
+|Name|Purpose| Required Fields |
 |:-:|:------|:--|
 |schools.csv| provides school level information| schoolId, schoolName|
 |sections.csv| provides section level information| schoolId, sectionId, schoolYear, teacherId, sectionName|
@@ -32,14 +35,14 @@ This standard contains five CSV files, with the following filenames:
 ![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
 
 ##Data Classification
-Criteria to determine data classification levels for student enrollment data.
+Criteria to determine data classification levels for student enrollment data is contained below.  However you should review NIST special publication [800-122](http://csrc.nist.gov/publications/nistpubs/800-122/sp800-122.pdf) "Guide to Protecting the Confientiality of Personally Identifiable Information (PII)".
 
-|Classification|Description|
-|:--|:---|
-| Public| any information that was not considered "Internal", "Sensitive", or "Restricted". |
-| Internal| any information that is not generally available to the public, but my be subject to open records disclosure.|
-| Restricted | any information that otherwise qualifies as prohibited, but would significantly reduce the effectiveness of faculty, staff, or students when acting in support of the districts mission.|
-| Prohibited| any information where the protection of the information is required by law/regulation or is required to self-report to the government and or provide notice to the individual if information is inappropriatedly accessed.|
+|Classification|Description| U.S. GOV Equivalent|
+|:--|:---|--|
+| Public | any information that was not considered "Internal", "Restricted", or "Hazardous". | Public |
+| Internal | any information that is not generally available to the public, but my be subject to open records disclosure.| Sensitive |
+| Restricted | any information that otherwise qualifies as "Hazardous", but would significantly reduce the effectiveness of faculty, staff, or students when acting in support of the districts mission.| Confidential |
+| Hazardous | any information where the protection of the information is required by law/regulation or is required to self-report to the government and or provide notice to the individual if information is inappropriatedly accessed.| Confiential requiring special handling|
 
 ##CSV Import Format
 The first record in a CSV file **must** be a header record containing field names. Field names are separated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
@@ -66,7 +69,7 @@ You should review the W3C document "[Metadata Vocabulary for Tabular Data](http:
 
 <a id='schools'></a>
 ## schools
-The school.csv collects school level information catagorized by district name and contains one or many schools. If the NCESId is provided you can collect additional information about the school and district by searching the [NCES data collection](http://nces.ed.gov/ccd/schoolsearch/) with the provided NCESId  
+The school.csv collects school level information catagorized by district name and contains one or many schools. If the NCESId is provided you can collect additional information about the school and district by searching the [NCES data collection](http://nces.ed.gov/ccd/schoolsearch/) with the provided NCESId. This objects transmission confientiality would be low.  
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
 
@@ -86,11 +89,11 @@ The school.csv collects school level information catagorized by district name an
 |12|lowGrade| The lowest grade served at this school.<ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |VARCHAR(10)| PUBLIC |
 |13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|VARCHAR(10)| PUBLIC |
 |14|contactName| The name of the principal at this school|VARCHAR(100)| PUBLIC |
-|15|contactEmail| The email address of the principal at this school|VARCHAR(100)| PUBLIC |
+|15|contactEmail| The email address of the principal at this school.|VARCHAR(100)| PUBLIC |
 
 <a id='section'></a>
 ## section
-The section.csv file provides a cross section of course, section, and term. Within SIF, Ed-Fi, and CEDS these would be normalized into seperate objects. We have denormalized the relatinship to simplify the delivery of data.
+The section.csv file provides a cross section of course, section, and term. Within SIF, Ed-Fi, and CEDS these would be normalized into seperate objects. We have denormalized the relatinship to simplify the delivery of data. This objects transmission confientiality would be low. 
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[course]<>1->*[section])
 
@@ -122,7 +125,7 @@ The section.csv file provides a cross section of course, section, and term. With
 
 <a id='student'></a>
 ## student
-The student.csv provides details about each of the students within our enrollment records.
+The student.csv provides details about each of the students within our enrollment records. This objects transmission confientiality would be high.  
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|
@@ -150,7 +153,7 @@ The student.csv provides details about each of the students within our enrollmen
 
 <a id='teacher'></a>
 ## teacher.csv
-The teacher.csv provides details about each of the teachers within our enrollment records.
+The teacher.csv provides details about each of the teachers within our enrollment records. This objects transmission confientiality would be high.  
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:-:|:--:|:--:|:--|:--|
@@ -167,7 +170,7 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 
 <a id='enrollment'></a>
 ## enrollment
-This file defines the information related to a students enrollmentin a section of a course.
+This file defines the information related to a students enrollmentin a section of a course. This objects transmission confientiality would be low.  
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
