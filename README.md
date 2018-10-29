@@ -85,7 +85,7 @@ The school.csv collects school level information catagorized by district name an
 ![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
-|:-:|:------|:---|:---:|:--:|:--:|:--|:--|
+|:-:|:------|:---|:---:|:--:|
 |1|schoolId| **(REQUIRED)** School's local id and must be unique across the district. Must not change. **(Unique)(Key)**| VARCHAR(100) | INTERNAL |
 |2|schoolName| **(REQUIRED)** The name of the school.|VARCHAR(100)| PUBLIC |
 |3|schoolFocus|The type of educational institution as classified by its focus <ul><li>"Regular"</li><li>"SpecialEd"</li><li>"Vocational"</li><li>"Alternative"</li><li>"Magnet"</li><li>"Charter"</li><li>"Private"</li></ul>|ENUM| PUBLIC |
