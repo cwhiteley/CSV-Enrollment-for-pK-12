@@ -192,7 +192,7 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 This file defines the information related to a students enrollmentin a section of a course. This objects transmission confientiality would be low.  
 
 | Order | Column | POSSIBLE VALUES & REMARKS | Type | Classification |
-|:-:|:------|:---|:---:|:--:|:--:|:--|:--|
+|:-:|:------|:---|:---:|:--:|
 | 1 | schoolId | **(REQUIRED)** Must match a schoolId from the schools.csv file. **(Unique)** **(Key)**|String| INTERNAL |
 | 2|sectionId| **(REQUIRED)** Must match a sectionId from the section.csv file. **(Unique)** **(Key)**|String| INTERNAL |
 | 3|studentId| **(REQUIRED)** Must match a studentId from the student.csv file. **(Unique)** **(Key)**|String| RESTRICTED |
