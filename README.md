@@ -1,25 +1,31 @@
-## TABLE OF CONTENT
+# TABLE OF CONTENT
+
 - [SCHOOLS](#schools)
 - [SECTIONS](#teacher)
 - [STUDENT](#teacher)
 - [TEACHERS](#teacher)
 - [ENROLLMENT](#enrollent)
 
- 
 ## Introduction
+
 The comma separated value format (CSV) has been used for exchanging and converting student data between various applications for quite some time. Surprisingly, while this format is very common within education, it has never been formally documented.
 
 ## Overview
-###Audience
+
+### Audience
+
 This document is intended for technical users responsible for interoperability and data sharing between application in the pK-12 environment.
 
 ### Purpose
+
 While numerous private specifications exist for various programs and systems, there is no single "master" specification for this format. This document provides specifications and guidance for developing formatted pK-12 student enrollment data. Due to lack of a single specification, there are considerable differences among implementations.
 
 ### Data Alignment
+
 The data elements contained with this this specification has been aligned with the School Interoperability Framework US 3.1 Data Model. This means that CEDS and Ed-Fi can be easily mapped to if your are inclided to use there data models.
 
 ### Files
+
 This standard contains five CSV files, with the following filenames:
 
 |Name|Purpose| Required Fields |
@@ -30,11 +36,12 @@ This standard contains five CSV files, with the following filenames:
 |teachers.csv| provides teacher level information| teacherId, firstName, lastName |
 |enrollments.csv| provides student enrollment information| schoolId, sectionId, studentId |
 
+### Relationship of CSV files
 
-###Relationship of CSV files
-![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
+![data model](http://yuml.me/diagram/scruffy/class/[SCHOOL.CSV]->[SECTION.CSV],[SECTION.CSV]->[TEACHER.CSV],[SCHOOL.CSV]->[ENROLLMENT.CSV],[SECTION.CSV]->[ENROLLMENT.CSV],[ENROLLMENT.CSV]->[STUDENT.CSV])
 
-##Data Classification
+## Data Classification
+
 Criteria to determine data classification levels for student enrollment data is contained below.  However you should review NIST special publication [800-122](http://csrc.nist.gov/publications/nistpubs/800-122/sp800-122.pdf) "Guide to Protecting the Confientiality of Personally Identifiable Information (PII)".
 
 |Classification|Description| U.S. GOV Equivalent|
@@ -44,31 +51,35 @@ Criteria to determine data classification levels for student enrollment data is 
 | Restricted | any information that otherwise qualifies as "Hazardous", but would significantly reduce the effectiveness of faculty, staff, or students when acting in support of the districts mission.| Confidential |
 | Hazardous | any information where the protection of the information is required by law/regulation or is required to self-report to the government and or provide notice to the individual if information is inappropriatedly accessed.| Confiential requiring special handling|
 
-##CSV Import Format
+## CSV Import Format
+
 The first record in a CSV file **must** be a header record containing field names. Field names are separated by commas. Field names must match headings defined for each enrollment file type. An example of the header record is show below
 
-> schoolId, sectionId, studentId 
+> schoolId, sectionId, studentId
 
-After the header record, the CSV file is made up of one or more data records. A data record is one line, contains values in one or more fields, separated by commas. 
+After the header record, the CSV file is made up of one or more data records. A data record is one line, contains values in one or more fields, separated by commas.
 
-+ Data fields are seperated with commas.
-> "John Doe", 2014-12-25 
-+ Leading and trailing whitespace is ignored.
-+ Data fields marked as Strings must be delimited with double-quote characters. 
-> "John"
-+ Data fields that contain double-quote characters must be surrounded by double-quotes.
-> "John ""The Original"" Doe"
-+ Data fields that contain commas characters must be surrounded by double-quores.
-> "Apt 1234, 5th Street"
-+ Data fields marked as Date must be formatted as a ISO 8601 Date YYYY-MM-DD.
-> 2014-12-25
-+ Data fields marked as Boolean can have a value of "Yes", "No", "Unknown", or empty
+- Data fields are seperated with commas.
+    > "John Doe", 2014-12-25
+- Leading and trailing whitespace is ignored.
+- Data fields marked as Strings must be delimited with double-quote characters.
+    > "John"
+- Data fields that contain double-quote characters must be surrounded by double-quotes.
+    > "John ""The Original"" Doe"
+- Data fields that contain commas characters must be surrounded by double-quores.
+    > "Apt 1234, 5th Street"
+- Data fields marked as Date must be formatted as a ISO 8601 Date YYYY-MM-DD.
+    > 2014-12-25
+- Data fields marked as Boolean can have a value of "Yes", "No", "Unknown", or empty
 
 ### Parsing cells
-You should review the W3C document "[Metadata Vocabulary for Tabular Data](http://www.w3.org/TR/2014/WD-tabular-metadata-20140710/#parsing-cells)" section 3.8.5 Parsing cells. 
+
+You should review the W3C document "[Metadata Vocabulary for Tabular Data](http://www.w3.org/TR/2014/WD-tabular-metadata-20140710/#parsing-cells)" section 3.8.5 Parsing cells.
 
 <a id='schools'></a>
+
 ## schools
+
 The school.csv collects school level information catagorized by district name and contains one or many schools. If the NCESId is provided you can collect additional information about the school and district by searching the [NCES data collection](http://nces.ed.gov/ccd/schoolsearch/) with the provided NCESId. This objects transmission confientiality would be low.  
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[district]<>1->*[school])
@@ -86,25 +97,28 @@ The school.csv collects school level information catagorized by district name an
 |9|state| Two letter addreviation for the state.|VARCHAR(2)| PUBLIC |
 |10|zip| 5 or 9 digit zip/postal code, with no punctuation.|VARCHAR(9)| PUBLIC |
 |11|phone| 10 digit phone number, with no punctuation.|VARCHAR(10)| PUBLIC |
-|12|lowGrade| The lowest grade served at this school.<ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |VARCHAR(10)| PUBLIC |
-|13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul>|VARCHAR(10)| PUBLIC |
+|12|lowGrade| The lowest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |VARCHAR(10)| PUBLIC |
+|13|highGrade|The highest grade served at this school. <ul><li>"PK" for Pre-Kindergarten/Preschool</li><li>"KG" for Kindergarten</li><li>integers for grades 1-12</li><li>"Other"</li><li>"Unknown"</li></ul> |VARCHAR(10)| PUBLIC |
 |14|contactName| The name of the principal at this school|VARCHAR(100)| PUBLIC |
 |15|contactEmail| The email address of the principal at this school.|VARCHAR(100)| PUBLIC |
 
 <a id='section'></a>
+
 ## section
-The section.csv file provides a cross section of course, section, and term. Within SIF, Ed-Fi, and CEDS these would be normalized into seperate objects. We have denormalized the relatinship to simplify the delivery of data. This objects transmission confientiality would be low. 
+
+The section.csv file provides a cross section of course, section, and term. Within SIF, Ed-Fi, and CEDS these would be normalized into seperate objects. We have denormalized the relatinship to simplify the delivery of data. This objects transmission confientiality would be low.
 
 ![course->section](http://yuml.me/diagram/scruffy/class/[course]<>1->*[section])
 
-###Section Use Case:
-+ Base Rule
+### Section Use Case
+
+- Base Rule
 > Students do not attend courses, they attend sections of a course.
-+ Elementary
-> Elementary student typically attend an all day class which cover multiple subjects. You can find this data represented as follows: 
+- Elementary
+> Elementary student typically attend an all day class which cover multiple subjects. You can find this data represented as follows:
 > >1. The student will attend a course with a single section for each student.
 > >2. The student will attend a courses with multiple sections for each student.
-> >3. The student will attend multiple course with multiple section for each student. 
+> >3. The student will attend multiple course with multiple section for each student.
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
@@ -124,7 +138,9 @@ The section.csv file provides a cross section of course, section, and term. With
 |13|termEndDate|The Section end date. The format should be in "YYYY-MM-DD"|date| PUBLIC |
 
 <a id='student'></a>
+
 ## student
+
 The student.csv provides details about each of the students within our enrollment records. This objects transmission confientiality would be high.  
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
@@ -148,11 +164,13 @@ The student.csv provides details about each of the students within our enrollmen
 |17|IEP|Is this student IEP eligible? <ul><li>"Yes"</li><li>"No"</li></ul> |Boolean| RESTRICTED |
 |18|homeless|Is the student homeless? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean| RESTRICTED |
 |19|migrant|Is this a migrant student? <ul><li>"Yes"</li><li>"No"</li></ul>|Boolean| RESTRICTED |
-|20|FRL|This student's lunch status? <ul><li>"Free"</li><li>"Reduced"</li><li>"No"</li></ul>|enum| RESTRICTED |
+| 20 | FRL | This student's lunch status<ul><li>"Free"</li><li>"Reduced"</li><li>No</li></ul>| enum | RESTRICTED |
 |21|gradYear|This is the year the student will graduate. The format is a four digit year, ISO 8601 Date "YYYY"|String| RESTRICTED |
 
 <a id='teacher'></a>
+
 ## teacher.csv
+
 The teacher.csv provides details about each of the teachers within our enrollment records. This objects transmission confientiality would be high.  
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
@@ -167,9 +185,10 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 |8|password|The teacher's default passwords for applications authentication. If you are using SAML you can leave blank.  |String| RESTRICTED |
 |9|email|The Email address of the teacher|String| PUBLIC |
 
-
 <a id='enrollment'></a>
+
 ## enrollment
+
 This file defines the information related to a students enrollmentin a section of a course. This objects transmission confientiality would be low.  
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |

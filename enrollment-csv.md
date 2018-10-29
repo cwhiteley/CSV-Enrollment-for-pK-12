@@ -32,7 +32,16 @@ This standard contains five CSV files, with the following filenames:
 
 
 ###Relationship of CSV files
+
 ![data model](http://yuml.me/diagram/scruffy/class/ [SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
+
+![this is it](http://yuml.me/diagram/scruffy/class/[SCHOOL.CSV]->[SECTION.CSV], [SECTION.CSV]->[TEACHER.CSV], [SCHOOL.CSV]->[ENROLLMENT.CSV], [SECTION.CSV]->[ENROLLMENT.CSV], [ENROLLMENT.CSV]->[STUDENT.CSV])
+
+
+![](http://yuml.me/diagram/scruffy/class/[Customer]<>1->*[Order] "yUML")
+
+
+
 
 ##Data Classification
 Criteria to determine data classification levels for student enrollment data is contained below.  However you should review NIST special publication [800-122](http://csrc.nist.gov/publications/nistpubs/800-122/sp800-122.pdf) "Guide to Protecting the Confientiality of Personally Identifiable Information (PII)".
