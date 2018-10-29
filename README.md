@@ -175,15 +175,15 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 
 | Order | Column | POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:-:|:--:|:--:|:--|:--|
-|1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String| INTERNAL |
-|2|teacherStateId|Student's state id and must be unique across the district. **(Unique)**|String| INTERNAL |
-|3|firstName| **(REQUIRED)** The first name of the teacher. |String| RESTRICTED |
-|4|middleName|The middle name of the teacher. |String| RESTRICTED |
-|5|lastName| **(REQUIRED)** The given name of the teacher. |String| RESTRICTED |
-|6|title|Title for this teacher.|String| PUBLIC |
-|7|username|The teacher's username for applications login. |String| RESTRICTED |
-|8|password|The teacher's default passwords for applications authentication. If you are using SAML you can leave blank.  |String| RESTRICTED |
-|9|email|The Email address of the teacher|String| PUBLIC |
+| 1 | teacherId | **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** | String| INTERNAL |
+| 2 | teacherStateId | Student's state id and must be unique across the district. **(Unique)**| String | INTERNAL |
+| 3 | firstName | **(REQUIRED)** The first name of the teacher. |String| RESTRICTED |
+| 4 | middleName | The middle name of the teacher. |String| RESTRICTED |
+| 5 | lastName | **(REQUIRED)** The given name of the teacher. |String| RESTRICTED |
+| 6 | title | Title for this teacher.|String| PUBLIC |
+| 7 | username | The teacher's username for applications login. |String| RESTRICTED |
+| 8 | password | The teacher's default passwords for applications authentication. If you are using SAML you can leave blank.  |String| RESTRICTED |
+| 9 | email | The Email address of the teacher|String| PUBLIC |
 
 <a id='enrollment'></a>
 
