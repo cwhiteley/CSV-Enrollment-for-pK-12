@@ -121,7 +121,7 @@ The section.csv file provides a cross section of course, section, and term. With
 > >3. The student will attend multiple course with multiple section for each student.
 
 |Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
-|:-:|:------|:---|:---:|:--:|:--:|:--|:--|
+|:-:|:------|:---|:---:|:--:|
 |1|schoolId| **(REQUIRED)** Token from the school.csv table linking the course/section to a school. **(Key)**|String| INTERNAL |
 |2|sectionId|**(REQUIRED)** Sections id and must be uniq across the district. Must not change. **(Unique)(Key)**|String| INTERNAL |
 |3|schoolYear|**(REQUIRED)** The school year for which the information is applicable, format "YYYY", e.g. 2014 for 2013-14| String | PUBLIC |
