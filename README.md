@@ -76,7 +76,7 @@ After the header record, the CSV file is made up of one or more data records. A 
 
 You should review the W3C document "[Metadata Vocabulary for Tabular Data](http://www.w3.org/TR/2014/WD-tabular-metadata-20140710/#parsing-cells)" section 3.8.5 Parsing cells.
 
-<a id='schools'></a>
+<a id="schools"></a>
 
 ## schools
 
@@ -102,7 +102,7 @@ The school.csv collects school level information catagorized by district name an
 |14|contactName| The name of the principal at this school|VARCHAR(100)| PUBLIC |
 |15|contactEmail| The email address of the principal at this school.|VARCHAR(100)| PUBLIC |
 
-<a id='section'></a>
+<a id="section"></a>
 
 ## section
 
@@ -137,7 +137,7 @@ The section.csv file provides a cross section of course, section, and term. With
 |12|termStartDate|The Section end date. The format should be in "YYYY-MM-DD"|date| PUBLIC |
 |13|termEndDate|The Section end date. The format should be in "YYYY-MM-DD"|date| PUBLIC |
 
-<a id='student'></a>
+<a id="student"></a>
 
 ## student
 
@@ -167,7 +167,7 @@ The student.csv provides details about each of the students within our enrollmen
 | 20 | FRL | This student's lunch status<ul><li>"Free"</li><li>"Reduced"</li><li>No</li></ul>| enum | RESTRICTED |
 |21|gradYear|This is the year the student will graduate. The format is a four digit year, ISO 8601 Date "YYYY"|String| RESTRICTED |
 
-<a id='teacher'></a>
+<a id="teacher"></a>
 
 ## teacher.csv
 
@@ -185,7 +185,7 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 | 8 | password | The teacher's default passwords for applications authentication. If you are using SAML you can leave blank.  |String| RESTRICTED |
 | 9 | email | The Email address of the teacher|String| PUBLIC |
 
-<a id='enrollment'></a>
+<a id="enrollment"></a>
 
 ## enrollment
 
