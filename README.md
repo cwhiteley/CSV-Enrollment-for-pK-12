@@ -174,7 +174,7 @@ The student.csv provides details about each of the students within our enrollmen
 The teacher.csv provides details about each of the teachers within our enrollment records. This objects transmission confientiality would be high.  
 
 | Order | Column | POSSIBLE VALUES & REMARKS | Type | Classification |
-|:-:|:------|:---|:-:|:--:|:--:|:--|:--|
+|:-:|:------|:---|:-:|:--:|
 | 1 | teacherId | **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** | String| INTERNAL |
 | 2 | teacherStateId | Student's state id and must be unique across the district. **(Unique)**| String | INTERNAL |
 | 3 | firstName | **(REQUIRED)** The first name of the teacher. |String| RESTRICTED |
