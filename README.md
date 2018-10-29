@@ -143,7 +143,7 @@ The section.csv file provides a cross section of course, section, and term. With
 
 The student.csv provides details about each of the students within our enrollment records. This objects transmission confientiality would be high.  
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
+| Order | Column | POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|
 |1|studentId| **(REQUIRED)** Student's local id and must be unique across the district. Must not change. **(Unique)(Key)**|String| RESTRICTED |
 |2|studentStateId|Student's state id and must be unique across the district. **(Unique)**|String| RESTRICTED |
