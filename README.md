@@ -173,7 +173,7 @@ The student.csv provides details about each of the students within our enrollmen
 
 The teacher.csv provides details about each of the teachers within our enrollment records. This objects transmission confientiality would be high.  
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
+| Order | Column | POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:-:|:--:|:--:|:--|:--|
 |1|teacherId| **(REQUIRED)** Teacher's local id and must be unique across the district. Must not change. Can be from the source system or state id. **(Unique)** **(Stable)** **(Key)** |String| INTERNAL |
 |2|teacherStateId|Student's state id and must be unique across the district. **(Unique)**|String| INTERNAL |
@@ -191,8 +191,8 @@ The teacher.csv provides details about each of the teachers within our enrollmen
 
 This file defines the information related to a students enrollmentin a section of a course. This objects transmission confientiality would be low.  
 
-|Order|Column| POSSIBLE VALUES & REMARKS | Type | Classification |
+| Order | Column | POSSIBLE VALUES & REMARKS | Type | Classification |
 |:-:|:------|:---|:---:|:--:|:--:|:--|:--|
-|1|schoolId| **(REQUIRED)** Must match a schoolId from the schools.csv file. **(Unique)** **(Key)**|String| INTERNAL |
-|2|sectionId| **(REQUIRED)** Must match a sectionId from the section.csv file. **(Unique)** **(Key)**|String| INTERNAL |
-|3|studentId| **(REQUIRED)** Must match a studentId from the student.csv file. **(Unique)** **(Key)**|String| RESTRICTED |
+| 1 | schoolId | **(REQUIRED)** Must match a schoolId from the schools.csv file. **(Unique)** **(Key)**|String| INTERNAL |
+| 2|sectionId| **(REQUIRED)** Must match a sectionId from the section.csv file. **(Unique)** **(Key)**|String| INTERNAL |
+| 3|studentId| **(REQUIRED)** Must match a studentId from the student.csv file. **(Unique)** **(Key)**|String| RESTRICTED |
